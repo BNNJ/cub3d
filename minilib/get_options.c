@@ -1,5 +1,5 @@
 #include "error.h"
-#include "libft.h"
+#include "minilib.h"
 #include "ft_printf.h"
 
 static int	find_char(char c, char *str)
