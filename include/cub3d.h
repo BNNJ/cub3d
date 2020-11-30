@@ -6,4 +6,6 @@ typedef struct	s_data
 	int	opt;
 }				t_data;
 
+char			**read_file(char *file);
+
 #endif

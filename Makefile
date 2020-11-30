@@ -5,6 +5,7 @@ NAME		=	cub3d
 
 SRC_DIR		=	./src
 SRCS		=	main.c				\
+				reader.c
 
 LIB_DIR		=	./minilib
 LIB_SRCS	=	get_options.c		\

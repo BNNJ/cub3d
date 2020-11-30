@@ -23,7 +23,7 @@ int			get_line(int fd, char **line)
 	{
 		free(saved);
 		saved = NULL;
-		return (0);
+		return (-1);
 	}
 
 	if ((endline_pos = find_char('\n', saved)) >= 0)

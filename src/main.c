@@ -4,41 +4,34 @@
 #include "minilib.h"
 #include "error.h"
 
-#include <fcntl.h>
-
 int		exit_failure()
 {
 	print_error("cub3d");
 	return (EXIT_FAILURE);
 }
 
-void	read_file(char *file)
+void	usage()
 {
-	int 	fd;
-	char	*line;
+	ft_dprintf(
+		0,
+		"usage: ./cub3d [-s/--save] <path/map.cub>\n"
+		"		-s --save: ???\n"
+		);
+}
 
-	int		ret;
-	int		i = 0;
-	if ((fd = open(file, O_RDONLY)) < 0)
+void	parse_data(char **data)
+{
+	for (int i = 0; data[i] != NULL; ++i)
 	{
-		ft_printf("DEBUG: %d\n%s\n%s\n", fd, strerror(errno), file);
-		return;
+		ft_printf("%s\n", data[i]);
 	}
-	while ((ret = get_line(fd, &line)) > 0)
-	{
-
-		ft_printf("%d: %s\n", i, line);
-		++i;
-	}
-	if (ret < 0)
-	get_line(0, NULL);
-	close(fd);
 }
 
 int		main(int argc, char **argv)
 {
 	t_data	data;
 	int		nb_opt;
+	char	**raw_data;
 
 	data = (t_data){0};
 	if (argc > 1)
@@ -47,11 +40,11 @@ int		main(int argc, char **argv)
 		if (errno != 0)
 			return (exit_failure());
 		(void)nb_opt;
-		read_file(argv[nb_opt]);
-//		parse_data();
-//		run();
+		if (!(raw_data = read_file(argv[nb_opt])))
+			return (exit_failure());
+		parse_data(raw_data);
 	}
-//	else
-//		usage();
+	else
+		usage();
 	return (EXIT_SUCCESS);
 }
