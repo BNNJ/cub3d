@@ -19,12 +19,16 @@ void	usage()
 		);
 }
 
-void	parse_data(char **data)
+t_data	parse_data(char **data, int options)
 {
+	t_data	d;
+
+	d = (t_data){options};
 	for (int i = 0; data[i] != NULL; ++i)
 	{
 		ft_printf("%s\n", data[i]);
 	}
+	return (d);
 }
 
 int		main(int argc, char **argv)
@@ -32,17 +36,18 @@ int		main(int argc, char **argv)
 	t_data	data;
 	int		nb_opt;
 	char	**raw_data;
+	int		options;
 
-	data = (t_data){0};
 	if (argc > 1)
 	{
-		nb_opt = get_options(argv, &data.opt, "s", (char*[2]){"save", NULL});
+		nb_opt = get_options(argv, &options, "s", (char*[2]){"save", NULL});
 		if (errno != 0)
 			return (exit_failure());
 		(void)nb_opt;
 		if (!(raw_data = read_file(argv[nb_opt])))
 			return (exit_failure());
-		parse_data(raw_data);
+		data = parse_data(raw_data, options);
+		(void)data;
 	}
 	else
 		usage();
