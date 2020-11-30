@@ -15,7 +15,7 @@ static int	match_short_opt(char *arg, char *opts)
 		else
 		{
 			set_error(EINVAL, strerror(EINVAL), arg);
-			return (0);
+			return (-1);
 		}
 		++arg;
 	}
@@ -34,7 +34,7 @@ static int	match_long_opt(char *arg, char **opts)
 		++i;
 	}
 	set_error(EINVAL, strerror(EINVAL), arg);
-	return (0);
+	return (-1);
 }
 
 int			get_options(char **argv, int *opt, char *optstr, char **opttab)
@@ -52,8 +52,8 @@ int			get_options(char **argv, int *opt, char *optstr, char **opttab)
 			*opt |= match_long_opt(arg + 2, opttab);
 		else if (optstr)
 			*opt |= match_short_opt(arg + 1, optstr);
-		if (errno != 0)
-			break;
+		if (*opt < 1)
+			return (-1);
 	}
 	return (nb_arg);
 }
