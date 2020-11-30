@@ -31,6 +31,12 @@ t_data	parse_data(char **data, int options)
 	return (d);
 }
 
+#define OPTS ("s")
+#define OPTT ((char*[2]){	\
+	"save",					\
+	NULL					\
+})
+
 int		main(int argc, char **argv)
 {
 	t_data	data;
@@ -40,8 +46,7 @@ int		main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		nb_opt = get_options(argv, &options, "s", (char*[2]){"save", NULL});
-		if (nb_opt < 0)
+		if ((nb_opt = get_options(argv, &options, OPTS, OPTT)) < 0)
 			return (exit_failure());
 		(void)nb_opt;
 		if (!(raw_data = read_file(argv[nb_opt])))
