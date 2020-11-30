@@ -1,7 +1,7 @@
 #include <errno.h>
 #include "ft_printf.h"
 
-char	g_err[64];
+static char	g_err[64];
 
 void		set_error(int errnum, char const *msg, char const* arg)
 {

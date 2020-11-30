@@ -2,20 +2,6 @@
 #include "minilib.h"
 #include "ft_printf.h"
 
-static int	find_char(char c, char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (c == str[i])
-			return (i);
-		++i;
-	}
-	return (-1);
-}
-
 static int	match_short_opt(char *arg, char *opts)
 {
 	int	opt;

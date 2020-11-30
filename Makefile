@@ -5,11 +5,13 @@ NAME		=	cub3d
 
 SRC_DIR		=	./src
 SRCS		=	main.c				\
-				error.c
 
 LIB_DIR		=	./minilib
 LIB_SRCS	=	get_options.c		\
-				ft_strcmp.c
+				get_line.c			\
+				error.c				\
+				find_char.c			\
+				strings.c
 
 OBJ_DIR		=	./obj
 
@@ -17,7 +19,7 @@ OBJ			=	$(addprefix $(OBJ_DIR)/,$(OBJS))
 OBJS		=	$(SRCS:.c=.o) $(LIB_SRCS:.c=.o)
 
 INC_DIR		=	./include
-INC			=	$(INC_DIR)/cub3d.h
+INC			=	$(INC_DIR)/cub3d.h $(INC_DIR)/error.h $(INC_DIR)/minilib.h
 
 FTPF_DIR	=	./ft_printf
 FTPF		=	$(FTPF_DIR)/libftprintf.a
