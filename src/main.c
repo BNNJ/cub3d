@@ -52,6 +52,7 @@ int		main(int argc, char **argv)
 		if (!(raw_data = read_file(argv[nb_opt])))
 			return (exit_failure());
 		data = parse_data(raw_data, options);
+		free(raw_data);
 		(void)data;
 	}
 	else
