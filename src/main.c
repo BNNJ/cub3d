@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 	int		options;
 
 	errno = 0;
+	data = (t_data){0};
 	if (argc > 1)
 	{
 		if ((nb_opt = get_options(argv, &options, OPTS, OPTT)) < 0)
@@ -37,7 +38,7 @@ int		main(int argc, char **argv)
 		if (parse_data(&data, raw_data, options) < 0)
 			return (exit_failure(raw_data));
 		free(raw_data);
-		
+
 	}
 	else
 		usage();

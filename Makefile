@@ -7,7 +7,8 @@ SRC_DIR		=	./src
 SRCS		=	main.c
 
 PARS_DIR	=	$(SRC_DIR)/parsing
-PARS_SRC	=	parser.c
+PARS_SRC	=	parser.c			\
+				config.c
 
 LIB_DIR		=	./minilib
 LIB_SRCS	=	get_options.c		\
