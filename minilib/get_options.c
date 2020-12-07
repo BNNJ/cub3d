@@ -14,7 +14,7 @@ static int	match_short_opt(char *arg, char *opts)
 			opt |= (1 << c);
 		else
 		{
-			set_error(EINVAL, strerror(EINVAL), arg);
+			set_error(EINVAL, "Invalid option", arg);
 			return (-1);
 		}
 		++arg;
@@ -33,7 +33,7 @@ static int	match_long_opt(char *arg, char **opts)
 			return (1 << i);
 		++i;
 	}
-	set_error(EINVAL, strerror(EINVAL), arg);
+	set_error(EINVAL, "Invalid option", arg);
 	return (-1);
 }
 

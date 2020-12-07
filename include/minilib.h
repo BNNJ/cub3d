@@ -21,6 +21,7 @@ void	ft_strdel(char **str);
 int		ft_strcmp(char const *s1, char const *s2);
 char	*ft_strjoin(char *s1, char *s2, uint8_t opt);
 char	*ft_substr(char *s, unsigned int start, size_t len, int opt);
+int		ft_startswith(char const *s, char const *a);
 
 
 #endif

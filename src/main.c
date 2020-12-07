@@ -4,8 +4,9 @@
 #include "minilib.h"
 #include "error.h"
 
-int		exit_failure()
+int		exit_failure(void *data)
 {
+	free(data);
 	print_error("cub3d");
 	return (EXIT_FAILURE);
 }
@@ -19,24 +20,6 @@ void	usage()
 		);
 }
 
-t_data	parse_data(char **data, int options)
-{
-	t_data	d;
-
-	d = (t_data){options};
-	for (int i = 0; data[i] != NULL; ++i)
-	{
-		ft_printf("%s\n", data[i]);
-	}
-	return (d);
-}
-
-#define OPTS ("s")
-#define OPTT ((char*[2]){	\
-	"save",					\
-	NULL					\
-})
-
 int		main(int argc, char **argv)
 {
 	t_data	data;
@@ -44,16 +27,17 @@ int		main(int argc, char **argv)
 	char	**raw_data;
 	int		options;
 
+	errno = 0;
 	if (argc > 1)
 	{
 		if ((nb_opt = get_options(argv, &options, OPTS, OPTT)) < 0)
-			return (exit_failure());
-		(void)nb_opt;
+			return (exit_failure(NULL));
 		if (!(raw_data = read_file(argv[nb_opt])))
-			return (exit_failure());
-		data = parse_data(raw_data, options);
+			return (exit_failure(NULL));
+		if (parse_data(&data, raw_data, options) < 0)
+			return (exit_failure(raw_data));
 		free(raw_data);
-		(void)data;
+		
 	}
 	else
 		usage();

@@ -2,7 +2,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cub3d.h"
 #include "minilib.h"
 #include "error.h"
 

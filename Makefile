@@ -4,23 +4,28 @@ CFLAGS		=	-Wall -Wextra -Werror -g
 NAME		=	cub3d
 
 SRC_DIR		=	./src
-SRCS		=	main.c				\
-				reader.c
+SRCS		=	main.c
+
+PARS_DIR	=	$(SRC_DIR)/parsing
+PARS_SRC	=	parser.c
 
 LIB_DIR		=	./minilib
 LIB_SRCS	=	get_options.c		\
 				get_line.c			\
 				error.c				\
 				find_char.c			\
-				strings.c
+				strings.c			\
+				reader.c
 
 OBJ_DIR		=	./obj
 
 OBJ			=	$(addprefix $(OBJ_DIR)/,$(OBJS))
-OBJS		=	$(SRCS:.c=.o) $(LIB_SRCS:.c=.o)
+OBJS		=	$(SRCS:.c=.o) $(LIB_SRCS:.c=.o) $(PARS_SRC:.c=.o)
 
 INC_DIR		=	./include
-INC			=	$(INC_DIR)/cub3d.h $(INC_DIR)/error.h $(INC_DIR)/minilib.h
+INC			=	$(INC_DIR)/cub3d.h		\
+				$(INC_DIR)/error.h		\
+				$(INC_DIR)/minilib.h
 
 FTPF_DIR	=	./ft_printf
 FTPF		=	$(FTPF_DIR)/libftprintf.a
@@ -41,6 +46,9 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c $(INC)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC_FLAGS)
 
 $(OBJ_DIR)/%.o:	$(LIB_DIR)/%.c $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC_FLAGS)
+
+$(OBJ_DIR)/%.o:	$(PARS_DIR)/%.c $(INC)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC_FLAGS)
 
 $(OBJ_DIR):

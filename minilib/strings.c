@@ -106,3 +106,17 @@ char	*ft_substr(char *s, unsigned int start, int len, int opt)
 		ft_strdel(&s);
 	return (substr);
 }
+
+int		ft_startswith(char const *s, char const *a)
+{
+	if (!s || !a)
+		return (0);
+	while (*a)
+	{
+		if (*a != *s)
+			return (0);
+		++s;
+		++a;
+	}
+	return (1);
+}
