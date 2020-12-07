@@ -46,6 +46,9 @@ static int	set_texture(t_config *cfg, int param, char *s)
 	return (0);
 }
 
+/*
+** TODO: fix error arg
+*/
 static int	set_color(t_config *cfg, int param, char *s)
 {
 	int	r;
@@ -54,17 +57,17 @@ static int	set_color(t_config *cfg, int param, char *s)
 
 	if ((r = ft_strtoi(&s)) > 255 || r < 0)
 	{
-		set_error(EINVAL, "invalid r color value", "r");
+		set_error(EINVAL, "invalid r color value", s);
 		return (-1);
 	}
 	if ((g = ft_strtoi(&s)) > 255 || r < 0)
 	{
-		set_error(EINVAL, "invalid g color value", "g");
+		set_error(EINVAL, "invalid g color value", s);
 		return (-1);
 	}
 	if ((b = ft_strtoi(&s)) > 255 || r < 0)
 	{
-		set_error(EINVAL, "invalid b color value", "b");
+		set_error(EINVAL, "invalid b color value", s);
 		return (-1);
 	}
 	cfg->colors[param - 5] = ((r << 16) + (g << 8) + b);
