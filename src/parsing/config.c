@@ -41,6 +41,7 @@ static int	set_color(t_config *cfg, int param, char *s)
 	int	g;
 	int	b;
 
+	++s;
 	if ((r = ft_strtoi(&s)) > 255 || r < 0)
 	{
 		set_error(EINVAL, "invalid r color value", s);
@@ -56,7 +57,7 @@ static int	set_color(t_config *cfg, int param, char *s)
 		set_error(EINVAL, "invalid b color value", s);
 		return (-1);
 	}
-	cfg->colors[param - 5] = ((r << 16) + (g << 8) + b);
+	cfg->colors[param - 6] = ((r << 16) + (g << 8) + b);
 	return (0);
 }
 

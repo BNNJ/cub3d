@@ -4,7 +4,8 @@ CFLAGS		=	-Wall -Wextra -Werror -g
 NAME		=	cub3d
 
 SRC_DIR		=	./src
-SRCS		=	main.c
+SRCS		=	main.c				\
+				tests.c
 
 PARS_DIR	=	$(SRC_DIR)/parsing
 PARS_SRC	=	parser.c			\

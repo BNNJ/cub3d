@@ -20,20 +20,6 @@ void	usage()
 		);
 }
 
-void	print_map(t_map *map)
-{
-	while (*(map->grid))
-	{
-		ft_printf("%s\n", *(map->grid));
-		++(map->grid);
-	}
-}
-
-void	test(t_data *data)
-{
-	print_map(&data->map);
-}
-
 int		main(int argc, char **argv)
 {
 	t_data	data;

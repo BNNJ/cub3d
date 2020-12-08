@@ -59,6 +59,7 @@ int				parse_data(t_data *data, char **raw_data, int options);
 int				config(t_config *cfg, int param, char *s);
 int				parse_line(t_map *map, char *line);
 
+void			test(t_data *data);
 
 /*
 ** don't think so
