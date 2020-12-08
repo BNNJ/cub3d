@@ -29,6 +29,8 @@
 						NULL						\
 					})
 
+# define print(s)	ft_printf("%s\n", s)
+
 typedef struct	s_config
 {
 	int			win_height;
@@ -39,7 +41,8 @@ typedef struct	s_config
 
 typedef struct	s_map
 {
-
+	char		**grid;
+	int			lines;
 }				t_map;
 
 typedef struct	s_data
@@ -54,7 +57,12 @@ typedef int		(*t_cfg_func)(t_config*, int, char*);
 char			**read_file(char *file);
 int				parse_data(t_data *data, char **raw_data, int options);
 int				config(t_config *cfg, int param, char *s);
+int				parse_line(t_map *map, char *line);
+
+
+/*
+** don't think so
+*/
 //char**			parse_config(t_config *cfg, char **data);
-int				parse_map(t_map *map, char *line);
 
 #endif

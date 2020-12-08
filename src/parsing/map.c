@@ -2,7 +2,7 @@
 #include "error.h"
 
 
-int		parse_map(t_map *map, char *line)
+int		parse_line(t_map *map, char *line)
 {
 	(void)map;
 	(void)line;

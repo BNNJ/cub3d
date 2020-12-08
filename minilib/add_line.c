@@ -1,21 +1,7 @@
 #include <stdlib.h>
+#include "minilib.h"
 
-static void	*ft_memcopy(void *src, void *dest, int len)
-{
-	char	*s;
-	char	*d;
-
-	s = (char*)src;
-	d = (char*)dest;
-	while (len)
-	{
-		d[len] = s[len];
-		--len;
-	}
-	return (d);
-}
-
-char		**add_line(char **data, char *line, int *len, int *cap)
+char	**add_line(char **data, char *line, int *len, int *cap)
 {
 	char	**new;
 

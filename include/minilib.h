@@ -42,5 +42,6 @@ int		str_startswith(void *str, void *start);
 
 int		find_char(char c, char const *str);
 int		ft_strtoi(char **str);
+void	*ft_memcopy(void *src, void *dest, int len);
 
 #endif

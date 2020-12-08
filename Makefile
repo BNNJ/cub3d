@@ -20,7 +20,8 @@ LIB_SRCS	=	get_options.c		\
 				reader.c			\
 				indexof.c			\
 				ft_strtoi.c			\
-				add_line.c
+				add_line.c			\
+				ft_memcopy.c
 
 OBJ_DIR		=	./obj
 
