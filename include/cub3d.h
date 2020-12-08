@@ -1,11 +1,12 @@
 #ifndef _CUB3D_H_
 #define _CUB3D_H_
 
-# define OPTS ("s")
-# define OPTT ((char*[2]){	\
-	"save",					\
-	NULL					\
-})
+# define OPTS		("s")
+# define NB_OPTS	1
+# define OPTT		((char*[NB_OPTS + 1]){	\
+						"save",						\
+						NULL						\
+					})
 
 # define MIN_WIN_H	0
 # define MAX_WIN_H	1080
@@ -14,7 +15,19 @@
 # define MAX_WIN_W	1920
 # define DEF_WIN_W	(MAX_WIN_W / 2)
 
+
 # define NB_PARAMS	8
+# define PARAMS		((char*[NB_PARAMS + 1]){	\
+						"R ",						\
+						"NO ",						\
+						"SO ",						\
+						"WE ",						\
+						"EA ",						\
+						"S ",						\
+						"F ",						\
+						"C ",						\
+						NULL						\
+					})
 
 typedef struct	s_config
 {
@@ -24,16 +37,24 @@ typedef struct	s_config
 	int			colors[2];
 }				t_config;
 
+typedef struct	s_map
+{
+
+}				t_map;
+
 typedef struct	s_data
 {
 	int			opt;
 	t_config	cfg;
+	t_map		map;
 }				t_data;
 
 typedef int		(*t_cfg_func)(t_config*, int, char*);
 
 char			**read_file(char *file);
 int				parse_data(t_data *data, char **raw_data, int options);
-int				config(t_config *cfg, int param, char *line);
+int				config(t_config *cfg, int param, char *s);
+//char**			parse_config(t_config *cfg, char **data);
+int				parse_map(t_map *map, char *line);
 
 #endif

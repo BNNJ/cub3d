@@ -21,7 +21,7 @@ static int	get_param(char const *line)
 	while (i < NB_PARAMS)
 	{
 		if (ft_startswith(line, params[i]))
-			return (1 << i);
+			return (i);
 		++i;
 	}
 	set_error(EINVAL, "Invalid configuration", line);
@@ -44,7 +44,7 @@ int			parse_data(t_data *data, char **raw_data, int options)
 	}
 	while (*raw_data)
 	{
-		//parse map
+		parse_map(&data->map, *raw_data);
 		++raw_data;
 	}
 	return (0);

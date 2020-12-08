@@ -8,7 +8,8 @@ SRCS		=	main.c
 
 PARS_DIR	=	$(SRC_DIR)/parsing
 PARS_SRC	=	parser.c			\
-				config.c
+				config.c			\
+				map.c
 
 LIB_DIR		=	./minilib
 LIB_SRCS	=	get_options.c		\
@@ -16,7 +17,10 @@ LIB_SRCS	=	get_options.c		\
 				error.c				\
 				find_char.c			\
 				strings.c			\
-				reader.c
+				reader.c			\
+				indexof.c			\
+				ft_strtoi.c			\
+				add_line.c
 
 OBJ_DIR		=	./obj
 

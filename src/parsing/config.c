@@ -3,20 +3,6 @@
 #include "cub3d.h"
 #include "error.h"
 
-static int	ft_strtoi(char **str)
-{
-	short				sign;
-	unsigned long long	result;
-
-	result = 0;
-	while (**str == ',' || **str == ' ')
-		++*str;
-	sign = (**str == '-' || **str == '+') ? -(*(*str)++ - 44) : 1;
-	while (**str && **str >= '0' && **str <= '9')
-		result = result * 10 + (*(*str)++ - '0');
-	return (result * sign);
-}
-
 static int	set_resolution(t_config *cfg, int param, char *s)
 {
 	(void)param;
@@ -89,3 +75,41 @@ int			config(t_config *cfg, int param, char *s)
 
 	return (table[param](cfg, param, s));
 }
+
+/*
+** Keeping it there in case new version fails
+** can't send data as error arg because it gets freed before use
+** TODO: fix that
+*/
+/*
+char**		parse_config(t_config *cfg, char **data)
+{
+	t_cfg_func	table[NB_PARAMS] = {
+		set_resolution,
+		set_texture,
+		set_texture,
+		set_texture,
+		set_texture,
+		set_texture,
+		set_color,
+		set_color
+	};
+	int			param;
+
+	while (*data)
+	{
+		if ((param = indexof(*data, 
+			(void*)PARAMS, NB_PARAMS, str_startswith)) > 0)
+		{
+			set_error(EINVAL, "Invalid configuration", NULL);
+			return (NULL);
+		}
+		if (table[param](cfg, param, *data) < 0)
+			return (NULL);
+		else if (**data != 0)
+			return (data);
+		++data;
+	}
+	return (data);
+}
+*/
