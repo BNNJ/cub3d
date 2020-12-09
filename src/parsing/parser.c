@@ -51,23 +51,28 @@ static char**	parse_config(t_config *cfg, char **data)
 
 static int		parse_map(t_map *map, char **data)
 {
-//	int	w;
-	int	l;
+	int	y;
+	int	x;
 
-	l = 0;
-	while (data[l])
+	y = 0;
+	while (data[y])
 	{
-		if (parse_line(map, data[l]) < 0)
+		if ((x = parse_line(data[y], y == 0 || data[y + 1] == NULL)) < 0)
 			return (-1);
-		++l;
+		else if (x > 0)
+		{
+			map->start_x = x;
+			map->start_y = y;
+		}
+		++y;
 	}
-	if (!(map->grid = malloc(sizeof(char*) * l)))
+	if (!(map->grid = malloc(sizeof(char*) * y)))
 	{
 		set_error(errno, strerror(errno), NULL);
 		return (-1);
 	}
-	ft_memcopy(data, map->grid, sizeof(char*) * l);
-	map->lines = l;
+	ft_memcopy(data, map->grid, sizeof(char*) * y);
+	map->lines = y;
 	return (0);
 }
 
