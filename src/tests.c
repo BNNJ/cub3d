@@ -33,5 +33,7 @@ static void	print_map(t_map *map)
 void		test(t_data *data)
 {
 	print_config(&data->cfg);
+	ft_printf("player start X: %d\nplayer start Y: %d\n\n",
+		data->map.start_x, data->map.start_y);
 	print_map(&data->map);
 }
