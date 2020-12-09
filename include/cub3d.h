@@ -15,7 +15,6 @@
 # define MAX_WIN_W	1920
 # define DEF_WIN_W	(MAX_WIN_W / 2)
 
-
 # define NB_PARAMS	8
 # define PARAMS		((char*[NB_PARAMS + 1]){	\
 						"R ",						\
@@ -28,6 +27,8 @@
 						"C ",						\
 						NULL						\
 					})
+
+# define MAP_CHARS	" 012NSEW"
 
 # define print(s)	ft_printf("%s\n", s)
 
@@ -43,6 +44,8 @@ typedef struct	s_map
 {
 	char		**grid;
 	int			lines;
+	int			start_x;
+	int			start_y;
 }				t_map;
 
 typedef struct	s_data
@@ -57,7 +60,7 @@ typedef int		(*t_cfg_func)(t_config*, int, char*);
 char			**read_file(char *file);
 int				parse_data(t_data *data, char **raw_data, int options);
 int				config(t_config *cfg, int param, char *s);
-int				parse_line(t_map *map, char *line);
+int				parse_line(char *line, int top_or_bottom);
 
 
 /*
