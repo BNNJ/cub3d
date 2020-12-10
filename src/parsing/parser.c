@@ -53,7 +53,11 @@ static int		parse_map(t_map *map, char **data)
 {
 	int	y;
 	int	x;
+	int	len;
+	int cap;
 
+	len = 0;
+	cap = 0;
 	y = 0;
 	while (data[y])
 	{
@@ -64,14 +68,9 @@ static int		parse_map(t_map *map, char **data)
 			map->start_x = x;
 			map->start_y = y;
 		}
+		map->level = add_line(map->level, data[y], &len, &cap);
 		++y;
 	}
-	if (!(map->level = malloc(sizeof(char*) * y)))
-	{
-		set_error(errno, strerror(errno), NULL);
-		return (-1);
-	}
-	ft_memcopy(data, map->level, sizeof(char*) * y);
 	map->lines = y;
 	return (0);
 }

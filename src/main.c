@@ -20,6 +20,16 @@ void	usage()
 		);
 }
 
+void	print_data(char **data)
+{
+	while (*data)
+	{
+		ft_printf("%s\n", *data);
+		++data;
+	}
+	ft_printf("======================================\n");
+}
+
 int		main(int argc, char **argv)
 {
 	t_data	data;
@@ -37,8 +47,9 @@ int		main(int argc, char **argv)
 			return (exit_failure(NULL));
 		if (parse_data(&data, raw_data, options) < 0)
 			return (exit_failure(raw_data));
-		test(&data);
+		print_data(raw_data);
 		free(raw_data);
+		test(&data);
 	}
 	else
 		usage();
