@@ -36,16 +36,17 @@ typedef struct	s_config
 {
 	int			win_height;
 	int			win_width;
+	char		*map_chars;
 	char		*textures[5];
 	int			colors[2];
 }				t_config;
 
 typedef struct	s_map
 {
-	char		**grid;
-	int			lines;
+	char		**level;
 	int			start_x;
 	int			start_y;
+	int			lines;
 }				t_map;
 
 typedef struct	s_data

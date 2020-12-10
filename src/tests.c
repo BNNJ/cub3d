@@ -23,10 +23,10 @@ static void print_config(t_config *cfg)
 
 static void	print_map(t_map *map)
 {
-	while (*(map->grid))
+	while (*(map->level))
 	{
-		ft_printf("%s\n", *(map->grid));
-		++(map->grid);
+		ft_printf("%s\n", *(map->level));
+		++(map->level);
 	}
 }
 

@@ -66,12 +66,12 @@ static int		parse_map(t_map *map, char **data)
 		}
 		++y;
 	}
-	if (!(map->grid = malloc(sizeof(char*) * y)))
+	if (!(map->level = malloc(sizeof(char*) * y)))
 	{
 		set_error(errno, strerror(errno), NULL);
 		return (-1);
 	}
-	ft_memcopy(data, map->grid, sizeof(char*) * y);
+	ft_memcopy(data, map->level, sizeof(char*) * y);
 	map->lines = y;
 	return (0);
 }
