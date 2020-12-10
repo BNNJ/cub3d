@@ -47,9 +47,11 @@ int		main(int argc, char **argv)
 			return (exit_failure(NULL));
 		if (parse_data(&data, raw_data, options) < 0)
 			return (exit_failure(raw_data));
-		print_data(raw_data);
-		free(raw_data);
+//		print_data(raw_data);
 		test(&data);
+		for (int i = 0; raw_data[i]; ++i)
+			free(raw_data[i]);
+		free(raw_data);
 	}
 	else
 		usage();
